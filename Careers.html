@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | RoomRent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .careers-header {
+            background: linear-gradient(135deg, #4a6bff, #2c3e50);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .careers-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .careers-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .header-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .primary-btn {
+            background-color: white;
+            color: #4a6bff;
+        }
+
+        .primary-btn:hover {
+            background-color: #f5f5f5;
+            transform: translateY(-2px);
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .secondary-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 80px 20px;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #7f8c8d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .value-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-card i {
+            font-size: 40px;
+            color: #4a6bff;
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .value-card p {
+            color: #7f8c8d;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 80px 20px;
+            background-color: #f8f9fa;
+        }
+
+        .benefits-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .benefits-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefits-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .benefits-list {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .benefit-item {
+            display: flex;
+            margin-bottom: 30px;
+        }
+
+        .benefit-icon {
+            background-color: #4a6bff;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .benefit-content h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .benefit-content p {
+            color: #7f8c8d;
+        }
+
+        /* Open Positions */
+        .positions-section {
+            padding: 80px 20px;
+            background-color: white;
+        }
+
+        .position-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background-color: #f8f9fa;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: #4a6bff;
+            color: white;
+        }
+
+        .positions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .position-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eee;
+            transition: all 0.3s;
+        }
+
+        .position-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: #4a6bff;
+        }
+
+        .position-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .position-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .position-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .position-meta i {
+            font-size: 14px;
+        }
+
+        .position-card p {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .position-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background-color: #f0f4ff;
+            color: #4a6bff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .apply-btn {
+            display: inline-block;
+            background-color: #4a6bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .apply-btn:hover {
+            background-color: #3a5bef;
+        }
+
+        /* Culture Section */
+        .culture-section {
+            padding: 80px 20px;
+            background-color: #f8f9fa;
+        }
+
+        .culture-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .culture-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .culture-content h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .culture-content p {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .culture-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stat-item h3 {
+            color: #4a6bff;
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .culture-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .culture-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 80px 20px;
+            background-color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 60px;
+            color: #4a6bff;
+            opacity: 0.2;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #4a6bff, #2c3e50);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-container h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-container p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 60px 20px 30px;
+            background-color: #1a252f;
+            color: white;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #4a6bff;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #2c3e50;
+            margin-top: 30px;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .careers-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .careers-header p {
+                font-size: 1rem;
+            }
+            
+            .benefits-container, .culture-container {
+                flex-direction: column;
+            }
+            
+            .benefits-image, .culture-image {
+                order: -1;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .positions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .careers-header {
+                padding: 80px 15px;
+            }
+            
+            .values-section, .benefits-section, .positions-section, 
+            .culture-section, .testimonials-section, .cta-section {
+                padding: 60px 15px;
+            }
+            
+            .header-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .header-btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .position-meta {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .culture-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="careers-header">
+        <div class="container">
+            <h1>Build Your Career at RoomRent</h1>
+            <p>Join our mission to revolutionize the rental housing market and create better living experiences for everyone.</p>
+            <div class="header-buttons">
+                <a href="#positions" class="header-btn primary-btn">View Open Positions</a>
+                <a href="#culture" class="header-btn secondary-btn">Our Culture</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Core Values</h2>
+                <p>These principles guide everything we do at RoomRent</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Customer Obsession</h3>
+                    <p>We start with the customer and work backwards to create exceptional experiences for both renters and property owners.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Innovation</h3>
+                    <p>We challenge the status quo and find creative solutions to housing problems that others ignore.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Integrity</h3>
+                    <p>We do the right thing, even when no one is watching. Transparency and honesty guide our decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Employee Benefits</h2>
+                <p>We invest in our team's wellbeing and professional growth</p>
+            </div>
+            <div class="benefits-container">
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Competitive Compensation</h3>
+                            <p>We offer salaries in the top 25% of the market plus equity options to share in our success.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Health & Wellness</h3>
+                            <p>Comprehensive medical, dental, and vision coverage with 100% of premiums paid for employees.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Learning & Development</h3>
+                            <p>$3,000 annual stipend for professional development and continuous learning opportunities.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-umbrella-beach"></i>
+                        </div>
+                        <div class="benefit-content">
+                            <h3>Flexible Time Off</h3>
+                            <p>Unlimited PTO policy with a minimum of 3 weeks encouraged, plus company-wide recharge days.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="benefits-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Happy team at work">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Open Positions -->
+    <section class="positions-section" id="positions">
+        <div class="container">
+            <div class="section-title">
+                <h2>Open Positions</h2>
+                <p>Find your perfect role with RoomRent</p>
+            </div>
+            <div class="position-filters">
+                <button class="filter-btn active">All Departments</button>
+                <button class="filter-btn">Engineering</button>
+                <button class="filter-btn">Product</button>
+                <button class="filter-btn">Marketing</button>
+                <button class="filter-btn">Operations</button>
+                <button class="filter-btn">Customer Success</button>
+            </div>
+            <div class="positions-grid">
+                <div class="position-card">
+                    <h3>Frontend Engineer</h3>
+                    <div class="position-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Remote</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-layer-group"></i> Mid-Senior</span>
+                    </div>
+                    <p>Build beautiful, responsive interfaces that make renting properties seamless for our users.</p>
+                    <div class="position-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">CSS</span>
+                    </div>
+                    <a href="#" class="apply-btn">Apply Now</a>
+                </div>
+                <div class="position-card">
+                    <h3>Growth Marketing Manager</h3>
+                    <div class="position-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> San Francisco</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-layer-group"></i> Senior</span>
+                    </div>
+                    <p>Develop and execute strategies to acquire new property owners and renters to our platform.</p>
+                    <div class="position-tags">
+                        <span class="tag">Digital Marketing</span>
+                        <span class="tag">Paid Acquisition</span>
+                        <span class="tag">SEO</span>
+                    </div>
+                    <a href="#" class="apply-btn">Apply Now</a>
+                </div>
+                <div class="position-card">
+                    <h3>Customer Support Specialist</h3>
+                    <div class="position-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Chicago</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-layer-group"></i> Entry Level</span>
+                    </div>
+                    <p>Provide exceptional support to our community of renters and property owners.</p>
+                    <div class="position-tags">
+                        <span class="tag">Customer Service</span>
+                        <span class="tag">Communication</span>
+                        <span class="tag">Problem Solving</span>
+                    </div>
+                    <a href="#" class="apply-btn">Apply Now</a>
+                </div>
+                <div class="position-card">
+                    <h3>Data Scientist</h3>
+                    <div class="position-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Remote</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-layer-group"></i> Senior</span>
+                    </div>
+                    <p>Use data to optimize our matching algorithms and improve user experiences.</p>
+                    <div class="position-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Machine Learning</span>
+                    </div>
+                    <a href="#" class="apply-btn">Apply Now</a>
+                </div>
+                <div class="position-card">
+                    <h3>Product Designer</h3>
+                    <div class="position-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> New York</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-layer-group"></i> Mid-Level</span>
+                    </div>
+                    <p>Design intuitive experiences that simplify the rental process for all users.</p>
+                    <div class="position-tags">
+                        <span class="tag">UI/UX</span>
+                        <span class="tag">Figma</span>
+                        <span class="tag">User Research</span>
+                    </div>
+                    <a href="#" class="apply-btn">Apply Now</a>
+                </div>
+                <div class="position-card">
+                    <h3>Operations Manager</h3>
+                    <div class="position-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Austin</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-layer-group"></i> Manager</span>
+                    </div>
+                    <p>Optimize our internal processes to scale our operations efficiently.</p>
+                    <div class="position-tags">
+                        <span class="tag">Process Improvement</span>
+                        <span class="tag">Project Management</span>
+                        <span class="tag">Strategy</span>
+                    </div>
+                    <a href="#" class="apply-btn">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culture Section -->
+    <section class="culture-section" id="culture">
+        <div class="container">
+            <div class="culture-container">
+                <div class="culture-content">
+                    <h2>Our Culture</h2>
+                    <p>At RoomRent, we've built a culture of trust, collaboration, and continuous learning. We believe that the best ideas can come from anywhere, and we empower every team member to contribute to our shared success.</p>
+                    <p>We value diversity in all forms and are committed to building an inclusive workplace where everyone can thrive. Our team comes from different backgrounds and brings unique perspectives that make our product better.</p>
+                    <div class="culture-stats">
+                        <div class="stat-item">
+                            <h3>4.8/5</h3>
+                            <p>Employee Happiness</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>85%</h3>
+                            <p>Remote Workforce</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>12+</h3>
+                            <p>Countries Represented</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="culture-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="RoomRent team collaborating">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hear From Our Team</h2>
+                <p>What it's really like to work at RoomRent</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        I've grown more in my two years at RoomRent than in my previous five years combined. The trust and autonomy given to employees is unparalleled.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Jessica L.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Jessica L.</h4>
+                            <p>Senior Product Manager</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        The mission to make housing more accessible is what drew me in, but the people are what keep me here. Smart, kind, and passionate about making a difference.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="David K.">
+                        </div>
+                        <div class="author-info">
+                            <h4>David K.</h4>
+                            <p>Engineering Lead</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        As a remote employee, I never feel disconnected. The company does an amazing job fostering connection and ensuring everyone has a voice.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Maria S.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Maria S.</h4>
+                            <p>Customer Success</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-container">
+                <h2>Ready to Join Our Team?</h2>
+                <p>If you don't see the perfect role listed, we'd still love to hear from you. We're always looking for talented people who share our mission.</p>
+                <a href="#" class="header-btn primary-btn">General Application</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>RoomRent</h3>
+                    <p>Making rental housing more accessible and affordable through technology and innovation.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Careers</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Engineering</a></li>
+                        <li><a href="#">Product</a></li>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">Marketing</a></li>
+                        <li><a href="#">Operations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Leadership</a></li>
+                        <li><a href="#">Values</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">GDPR</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 RoomRent. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Position filtering
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Here you would normally filter the positions
+                    // For this demo, we'll just show all positions
+                });
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Animate elements when they come into view
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.value-card, .benefit-item, .position-card, .testimonial-card');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementPosition < windowHeight - 100) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Set initial state
+            const animatedElements = document.querySelectorAll('.value-card, .benefit-item, .position-card, .testimonial-card');
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            // Run on load and scroll
+            animateOnScroll();
+            window.addEventListener('scroll', animateOnScroll);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Your Property | RoomRent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .list-header {
+            background: linear-gradient(135deg, #4a6bff, #2c3e50);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .list-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .list-header p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 50px 20px;
+            background-color: white;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            transform: translateY(-50px);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .form-title h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #4a6bff;
+            outline: none;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-group input {
+            width: auto;
+        }
+
+        .photo-upload {
+            border: 2px dashed #ddd;
+            border-radius: 5px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .photo-upload:hover {
+            border-color: #4a6bff;
+        }
+
+        .photo-upload i {
+            font-size: 40px;
+            color: #4a6bff;
+            margin-bottom: 15px;
+        }
+
+        .photo-upload p {
+            color: #7f8c8d;
+        }
+
+        .submit-btn {
+            background-color: #4a6bff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #3a5bef;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 60px 20px;
+            background-color: #f5f7fa;
+            text-align: center;
+        }
+
+        .benefits-section h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-card i {
+            font-size: 40px;
+            color: #4a6bff;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .benefit-card p {
+            color: #7f8c8d;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 60px 20px;
+            background-color: white;
+        }
+
+        .how-it-works h2 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .steps {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            background-color: #4a6bff;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .step-content p {
+            color: #7f8c8d;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 25px;
+            width: 2px;
+            height: 100%;
+            background-color: #ddd;
+            z-index: 0;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 60px 20px;
+            background-color: #f5f7fa;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-card .quote {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 60px 20px;
+            background-color: white;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 15px 20px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: #f1f1f1;
+        }
+
+        .faq-question h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: normal;
+            color: #2c3e50;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            background-color: white;
+        }
+
+        .faq-answer p {
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        .faq-item.active .faq-question {
+            background-color: #e8f4fc;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 20px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #4a6bff, #2c3e50);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .primary-btn {
+            background-color: white;
+            color: #4a6bff;
+        }
+
+        .primary-btn:hover {
+            background-color: #f5f5f5;
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .secondary-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 20px;
+            background-color: #1a252f;
+            color: white;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #4a6bff;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #2c3e50;
+            margin-top: 30px;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .form-container {
+                padding: 30px;
+            }
+            
+            .list-header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-title h2 {
+                font-size: 1.5rem;
+            }
+            
+            .step {
+                flex-direction: column;
+            }
+            
+            .step-number {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .steps::before {
+                left: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .list-header {
+                padding: 60px 15px;
+            }
+            
+            .form-section, .benefits-section, .how-it-works, 
+            .testimonials, .faq-section, .cta-section {
+                padding: 40px 15px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .cta-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="list-header">
+        <div class="container">
+            <h1>List Your Property with Nestorac</h1>
+            <p>Earn extra income by renting out your spare room to verified tenants. We handle everything from marketing to payments.</p>
+        </div>
+    </header>
+
+    <!-- Form Section -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-title">
+                    <h2>Property Information</h2>
+                    <p>Fill out the form below to get started</p>
+                </div>
+                <form id="propertyForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="propertyType">Property Type</label>
+                            <select id="propertyType" required>
+                                <option value="">Select property type</option>
+                                <option value="private-room">Private Room</option>
+                                <option value="shared-room">Shared Room</option>
+                                <option value="studio">Studio Apartment</option>
+                                <option value="apartment">Entire Apartment</option>
+                                <option value="house">Entire House</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="bedrooms">Number of Bedrooms</label>
+                            <select id="bedrooms" required>
+                                <option value="">Select number</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5+">5+</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="address">Full Address</label>
+                            <input type="text" id="address" placeholder="Street address, city, state, ZIP" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="rent">Monthly Rent ($)</label>
+                            <input type="number" id="rent" placeholder="e.g. 1200" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="availability">Availability Date</label>
+                            <input type="date" id="availability" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Amenities</label>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="wifi" name="amenities">
+                            <label for="wifi">Wi-Fi</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="parking" name="amenities">
+                            <label for="parking">Parking</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="laundry" name="amenities">
+                            <label for="laundry">Laundry</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="kitchen" name="amenities">
+                            <label for="kitchen">Kitchen Access</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="furnished" name="amenities">
+                            <label for="furnished">Furnished</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Property Description</label>
+                        <textarea id="description" placeholder="Tell potential tenants about your property..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Photos (Minimum 3)</label>
+                        <div class="photo-upload">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Click to upload photos or drag and drop</p>
+                            <input type="file" id="propertyPhotos" multiple style="display: none;">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="submit-btn">Submit Property</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2>Why List With Us?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Maximize Your Earnings</h3>
+                    <p>Keep up to 97% of the rent with our low 3% commission fee, significantly lower than traditional agencies.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Verified Tenants</h3>
+                    <p>All applicants undergo thorough background and credit checks for your peace of mind.</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-file-contract"></i>
+                    <h3>Legal Protection</h3>
+                    <p>Our lease agreements are legally vetted and include damage protection up to $1 million.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>List Your Property</h3>
+                        <p>Fill out our simple form with details about your property, upload photos, and set your rental terms.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>We Market Your Listing</h3>
+                        <p>We promote your property across our network of rental platforms and handle all tenant inquiries.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Review Applications</h3>
+                        <p>View tenant profiles, rental history, and background checks to select the best match.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Sign & Move In</h3>
+                        <p>We handle the lease signing and collect the security deposit. You receive rent payments monthly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Hosts Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="quote">
+                        "I've been listing my spare room with RoomRent for 2 years and it's been completely hassle-free. The tenants are always respectful and payments arrive like clockwork."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="sushant.jpg" alt="Sarah J.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sushant K</h4>
+                            <p>Host since 2021</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">
+                        "As a first-time landlord, I was nervous about renting out my basement apartment. RoomRent made the process so simple and provided great support throughout."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael T.</h4>
+                            <p>Host since 2022</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote">
+                        "The tenant screening process gives me confidence I'm renting to responsible people. I've had zero issues in 3 years of using RoomRent."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya K.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Priya K.</h4>
+                            <p>Host since 2020</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How much does it cost to list my property?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Listing your property is completely free. We only charge a 3% commission fee when you successfully rent your property through our platform, which is significantly lower than traditional real estate agents who typically charge 8-12%.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How are tenants screened?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All potential tenants undergo a thorough screening process that includes credit checks, employment verification, rental history, and criminal background checks. You'll have access to all this information before approving any tenant.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What if there's damage to my property?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our lease agreements include a damage protection clause that covers up to $1 million in damages. We also collect a security deposit from tenants (typically equal to one month's rent) that can be used to cover any damages or unpaid rent.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I receive rent payments?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Rent is collected electronically from tenants each month and automatically deposited into your bank account, minus our small commission fee. You'll receive payment on the same day each month.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I set rules for my property?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. You can specify house rules regarding smoking, pets, guests, quiet hours, and other preferences. These rules will be included in the lease agreement and communicated clearly to tenants.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Earn From Your Extra Space?</h2>
+                <p>Join thousands of hosts who are earning passive income with their spare rooms and properties.</p>
+                <div class="cta-buttons">
+                    <a href="#propertyForm" class="cta-button primary-btn">List Your Property Now</a>
+                    <a href="#" class="cta-button secondary-btn">Contact Our Team</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>RoomRent</h3>
+                    <p>Making rental housing more accessible and affordable while helping property owners maximize their earnings.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>For Hosts</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Why List With Us</a></li>
+                        <li><a href="#">Hosting Resources</a></li>
+                        <li><a href="#">Safety Standards</a></li>
+                        <li><a href="#">Host Protection</a></li>
+                        <li><a href="#">Community Forum</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>For Tenants</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Search Rentals</a></li>
+                        <li><a href="#">Rental Guide</a></li>
+                        <li><a href="#">Tenant Resources</a></li>
+                        <li><a href="#">Application Process</a></li>
+                        <li><a href="#">Tenant Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 RoomRent. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Photo upload interaction
+            const photoUpload = document.querySelector('.photo-upload');
+            const fileInput = document.getElementById('propertyPhotos');
+            
+            photoUpload.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            fileInput.addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    photoUpload.innerHTML = `
+                        <i class="fas fa-check-circle"></i>
+                        <p>${this.files.length} photos selected</p>
+                        <p style="font-size:12px;">Click to change</p>
+                    `;
+                }
+            });
+            
+            // Drag and drop for photos
+            photoUpload.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#4a6bff';
+                this.style.backgroundColor = 'rgba(74, 107, 255, 0.1)';
+            });
+            
+            photoUpload.addEventListener('dragleave', function() {
+                this.style.borderColor = '#ddd';
+                this.style.backgroundColor = 'transparent';
+            });
+            
+            photoUpload.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.style.borderColor = '#ddd';
+                this.style.backgroundColor = 'transparent';
+                fileInput.files = e.dataTransfer.files;
+                
+                if (fileInput.files.length > 0) {
+                    photoUpload.innerHTML = `
+                        <i class="fas fa-check-circle"></i>
+                        <p>${fileInput.files.length} photos selected</p>
+                        <p style="font-size:12px;">Click to change</p>
+                    `;
+                }
+            });
+            
+            // FAQ accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Form submission
+            const propertyForm = document.getElementById('propertyForm');
+            propertyForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Here you would normally send the form data to your server
+                alert('Thank you for your submission! Our team will review your property details and contact you within 24 hours.');
+                this.reset();
+                photoUpload.innerHTML = `
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Click to upload photos or drag and drop</p>
+                `;
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

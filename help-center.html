@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .help-center-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .help-header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .help-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Search Section */
+        .search-section {
+            padding: 25px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #eee;
+        }
+
+        .search-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 15px 20px 15px 50px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 16px;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        .search-container input:focus {
+            border-color: #3498db;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7f8c8d;
+        }
+
+        /* Main Content */
+        .help-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        /* Categories Section */
+        .categories-section {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+
+        .section-title {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid #3498db;
+        }
+
+        .category-card:hover {
+            background-color: #e8f4fc;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-card i {
+            font-size: 24px;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .category-card h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .category-card p {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 15px 20px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: #f1f1f1;
+        }
+
+        .faq-question h3 {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: normal;
+            color: #2c3e50;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            background-color: white;
+        }
+
+        .faq-answer p {
+            padding: 15px 0;
+            margin: 0;
+        }
+
+        .faq-item.active .faq-question {
+            background-color: #e8f4fc;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 20px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            width: 100%;
+            padding: 20px;
+            margin-top: 20px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #eee;
+        }
+
+        .contact-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .contact-option {
+            flex: 1;
+            min-width: 200px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-option i {
+            font-size: 28px;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+
+        .contact-option h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .contact-option p {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .contact-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .help-content {
+                flex-direction: column;
+            }
+            
+            .categories-section, .faq-section {
+                width: 100%;
+            }
+            
+            .help-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .help-header {
+                padding: 20px 15px;
+            }
+            
+            .search-section {
+                padding: 20px 15px;
+            }
+            
+            .help-content {
+                padding: 15px;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-options {
+                flex-direction: column;
+            }
+            
+            .contact-option {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="help-center-container">
+        <!-- Header -->
+        <div class="help-header">
+            <h1>Help Center</h1>
+            <p>Find answers to your questions</p>
+        </div>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="Search our help articles..." id="helpSearch">
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="help-content">
+            <!-- Categories Section -->
+            <div class="categories-section">
+                <h2 class="section-title">Popular Categories</h2>
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <i class="fas fa-user"></i>
+                        <h3>Account Settings</h3>
+                        <p>Manage your profile, privacy, and security settings</p>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Orders & Payments</h3>
+                        <p>Track orders, manage payments, and refunds</p>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-truck"></i>
+                        <h3>Shipping & Delivery</h3>
+                        <p>Information about shipping options and timelines</p>
+                    </div>
+                    <div class="category-card">
+                        <i class="fas fa-exchange-alt"></i>
+                        <h3>Returns & Refunds</h3>
+                        <p>How to return items and get refunds</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I reset my password?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To reset your password, go to the login page and click on "Forgot Password." Enter your email address and you'll receive a link to create a new password. Make sure to check your spam folder if you don't see the email in your inbox.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What payment methods do you accept?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and Apple Pay. Some regions may have additional payment options available.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How can I track my order?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Once your order has shipped, you'll receive a confirmation email with a tracking number. You can click the tracking number in the email or log in to your account to view the current status of your shipment.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What is your return policy?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a 30-day return policy for most items. Items must be unused and in their original packaging with all tags attached. Some items like perishable goods or personalized products may not be eligible for return.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="contact-section">
+                <h2 class="section-title">Still need help?</h2>
+                <div class="contact-options">
+                    <div class="contact-option">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Call Us</h3>
+                        <p>Available 24/7 for urgent inquiries</p>
+                        <a href="tel:+18005551234" class="contact-btn">Call Now</a>
+                    </div>
+                    <div class="contact-option">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email Us</h3>
+                        <p>Typically respond within 24 hours</p>
+                        <a href="mailto:support@example.com" class="contact-btn">Send Email</a>
+                    </div>
+                    <div class="contact-option">
+                        <i class="fas fa-comment-dots"></i>
+                        <h3>Live Chat</h3>
+                        <p>Available Mon-Fri, 9am-5pm EST</p>
+                        <a href="#" class="contact-btn">Start Chat</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ accordion functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Search functionality
+            const helpSearch = document.getElementById('helpSearch');
+            helpSearch.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const faqQuestions = document.querySelectorAll('.faq-question h3');
+                const categoryCards = document.querySelectorAll('.category-card h3');
+                
+                // Search in FAQ questions
+                faqQuestions.forEach(question => {
+                    const item = question.closest('.faq-item');
+                    if (question.textContent.toLowerCase().includes(searchTerm)) {
+                        item.style.display = '';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Search in category cards
+                categoryCards.forEach(card => {
+                    const category = card.closest('.category-card');
+                    if (card.textContent.toLowerCase().includes(searchTerm)) {
+                        category.style.display = '';
+                    } else {
+                        category.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
